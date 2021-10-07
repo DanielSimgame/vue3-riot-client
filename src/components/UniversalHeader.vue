@@ -1,7 +1,7 @@
 <template>
   <header class="bg-riotGray shadow">
     <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8 flex flex-row justify-between">
-      <ButtonNav link="/about" :content="NavButtons.apps" ></ButtonNav>
+      <ButtonNav link="/myGame" :content="NavButtons.apps" ></ButtonNav>
       <div class="">
         <h1
             class="text-white text-3xl font-bold leading-tight text-gray-900">
