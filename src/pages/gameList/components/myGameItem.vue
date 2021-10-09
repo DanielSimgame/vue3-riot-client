@@ -1,8 +1,8 @@
 <template>
   <div class="game-list-item box-content">
     <div
-        class="hoverBox transition duration-100 ease-in-out border-4 border-riotGray border-solid
-              hover:border-4 hover:border-riotGray-lightest hover:border-solid p-1 rounded-xl">
+        class="hoverBox p-1 rounded-xl transform transition duration-100 ease-in-out border-4 border-riotGray border-solid
+              hover:animate-gameItemHover_scale hover:border-4 hover:border-riotGray-lightest hover:border-solid">
       <router-link :to="$props.gameLink">
         <img class="" :src="$props.gameImage" alt/>
       </router-link>

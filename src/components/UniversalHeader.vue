@@ -4,7 +4,7 @@
       <ButtonNav link="/myGame" :content="NavButtons.apps" ></ButtonNav>
       <div class="">
         <h1
-            class="text-white text-3xl font-bold leading-tight text-gray-900">
+            class="text-white text-3xl font-bold leading-tight">
           {{ title }}
         </h1>
       </div>

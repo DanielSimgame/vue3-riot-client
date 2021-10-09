@@ -17,7 +17,19 @@ module.exports = {
       fontFamily: {
         sans: ['"Inter var"', ...defaultTheme.fontFamily.sans],
       },
+      keyframes: {
+        gameItemHover_scale: {
+          '0%, 100%': { transform: 'scale(1.00,1.00)' },
+          '50%': { transform: 'scale(1.05,1.05)' },
+        },
+      },
+      animation: {
+        gameItemHover_scale: 'gameItemHover_scale 0.25s ease-in'
+      },
     },
+  },
+  variants: {
+    animation: ['hover', 'group-hover']
   },
   plugins: [
     require('@tailwindcss/forms'),
