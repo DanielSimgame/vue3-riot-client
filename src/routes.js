@@ -1,7 +1,7 @@
 import Home from './views/Home.vue'
 import About from './views/About.vue'
 import NotFound from './views/NotFound.vue'
-const myGameList = () => import('./pages/gameList/myGameList.vue')
+const myGameList = () => import('./views/gameList/myGameList.vue')
 
 /** @type {import('vue-router').RouterOptions['routes']} */
 export const routes = [

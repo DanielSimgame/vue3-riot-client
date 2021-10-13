@@ -1,6 +1,5 @@
 <template>
   <div>
-    <universal-header></universal-header>
     <main>
       <router-view />
     </main>
