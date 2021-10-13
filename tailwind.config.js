@@ -22,33 +22,13 @@ module.exports = {
           '0%, 100%': {transform: 'scale(1.00,1.00)'},
           '50%': {transform: 'scale(1.05,1.05)'},
         },
-        gameItemHover_bgcolor: {
-          '0%': {
-            background: 'transparent',
-            backdropFilter: 'blur(5px)',
-            backdropBrightness: 'brightness(0.5)'
-          },
-          '50%': {
-            background: 'linear-gradient(to right, rgba(255,0,0,0) 0%,' +
-              'rgba(255,0,0,0.7) 30%,rgba(255,0,0,0.3) 68%,rgba(255,0,0,0) 100%)',
-            backdropFilter: 'blur(5px)',
-            backdropBrightness: 'brightness(3)'
-          },
-          '100%': {
-            background: 'linear-gradient(to right, rgba(255,0,0,0) 0%,' +
-              'rgba(255,0,0,0.3) 30%,rgba(255,0,0,0.3) 68%,rgba(255,0,0,0) 100%)',
-            backdropFilter: 'blur(5px)',
-            backdropBrightness: 'brightness(0.5)'
-          }
-        },
-        bgcolor: {
-          '0%': {backgroundColor: 'transparent'},
-          '100%': {backgroundColor: 'red'}
+        rotate: {
+          '100%': {transform: 'rotate(1turn)'}
         }
       },
       animation: {
         gameItemHover_scale: 'gameItemHover_scale 0.25s ease-in',
-        gameItemHover_bgcolor: 'gameItemHover_bgcolor 1s forwards'
+        rotate: 'rotate 4s linear infinite'
       },
     },
   },

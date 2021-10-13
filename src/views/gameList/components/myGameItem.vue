@@ -3,8 +3,11 @@
     <div class="child-bg absolute bg-transparent transition group-hover:animate-gameItemHover_bgcolor w-80 h-60" style="left: -10px;top: -10px;z-index: 0"></div>
     <div
         class="hoverBox p-1 rounded-xl transform transition duration-100 ease-in-out border-4 border-riotGray border-solid
-              group-hover:animate-gameItemHover_scale group-hover:border-4 group-hover:border-riotGray-lightest group-hover:border-solid"
-        style="z-index: 1">
+              group-hover:animate-gameItemHover_scale animate-rotate group-hover:border-4 group-hover:border-riotGray-lightest group-hover:border-solid"
+        style="z-index: 1;background-color: #1a232a;
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        background-image: conic-gradient(transparent, rgba(168, 239, 255, 1), transparent 30%);box-sizing: border-box;">
       <router-link :to="$props.gameLink">
         <img class="" :src="$props.gameImage" alt/>
       </router-link>
