@@ -9,7 +9,8 @@
         <my-game-item v-for="(item, index) in myGamesListArr"
                       :game-title="item.gameTitle"
                       :iconType="item.iconType"
-                      :game-icon="item.gameIcon">
+                      :game-icon="item.gameIcon"
+                      :index="index">
         </my-game-item>
       </div>
     </div>

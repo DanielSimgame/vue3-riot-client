@@ -23,7 +23,8 @@ module.exports = {
           '50%': {transform: 'scale(1.05,1.05)'},
         },
         rotate: {
-          '100%': {transform: 'rotate(1turn)'}
+          '100%': {transform: 'rotate(--rotate-deg)'}
+          // '100%': {transform: 'rotate(1turn)'}
         }
       },
       animation: {
