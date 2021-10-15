@@ -1,7 +1,5 @@
 <template>
   <div class="game-list-item box-content">
-    <!--    <div class="child-bg absolute bg-transparent transition"-->
-    <!--         style="left: -10px;top: -10px;z-index: 0"></div>-->
     <div class="hover-box-father relative">
       <div
           class="hover-box rounded-xl transform transition duration-100 ease-in-out border-riotGray border-solid
@@ -19,7 +17,6 @@
       <div class="hover-box-bg" :id="'hover-box-bg-' + $props.index"></div>
     </div>
     <div class="myGameBox px-5 flex flex-row" style="z-index: 2">
-      <!--      <img class="" v-if="$props.iconType === 1" :src="$props.gameIcon" alt="" height="50" width="50">-->
       <font-awesome-icon v-if="$props.iconType === 1" class="text-white text-4xl my-auto mx-1.5"
                          :icon="['fas', 'fist-raised']"/>
       <font-awesome-icon v-else-if="$props.iconType === 2" class="text-white text-4xl my-auto mx-1.5"
@@ -36,7 +33,7 @@ import {nextTick} from "vue";
 
 let count = 0
 let nonResetCount = 0
-let updateRate = 1
+let updateRate = 10
 let hover_box_id = 'hover-box'
 let componentIndex = 0
 let elem = null
@@ -64,7 +61,7 @@ export default {
     },
     gameTitle: {
       type: String,
-      default: "游戏名称",
+      default: "GameName",
       required: true
     },
     iconType: {
@@ -100,8 +97,8 @@ export default {
   },
   methods: {
     /**
-     * 根据鼠标移动的距离来改变 .hover-box 的background旋转角度。
-     * @param event 鼠标事件
+     * Make .hover-box - background rotate with mouse movement
+     * @param event Mouse event
      * */
     update(event) {
       this.updatePosition(event)
@@ -109,12 +106,12 @@ export default {
       mouse.y = elem.offsetTop + elem.height / 2
       this.updateTransformStyle(mouse.x, mouse.y)
       console.log(`updated: mouse: x:${mouse.x}, _x:${mouse._x}, y:${mouse.y}, _y:${mouse._y},
-      元素#hover-box.height == ${rect.height},元素#hover-box.width == ${rect.width},`)
+      #hover-box.height == ${rect.height},#hover-box.width == ${rect.width},`)
     },
     /**
-     * 计算并更新元素样式的 transform 属性。
-     * @param x 坐标x
-     * @param y 坐标y
+     * Calculate and update --rotate-deg in :root
+     * @param x Abscissa x
+     * @param y Ordinate y
      * */
     updateTransformStyle(x, y) {
       let angle = Math.atan2(y - mouse._y, x - mouse._x) / (Math.PI / 180) + 60
@@ -127,8 +124,8 @@ export default {
       console.log(root.getPropertyValue('--rotate-deg'))
     },
     /**
-     * 获取鼠标当前相对(0,0)的坐标位置。
-     * @param event 鼠标事件
+     * Get mouse relative position (related to element center(0, 0))
+     * @param event Mouse event
      * */
     updatePosition(event) {
       let e = event || Event
@@ -136,19 +133,18 @@ export default {
       mouse.y = (e.clientY - mouse._y) * -1
     },
     /**
-     * 控制 update() 执行次数，只有当其的返回值为 true 时才执行update()。
-     * 为减少 update() 执行次数，以提高代码性能。
-     * 当 _counter 值是 updateRate 整数倍时，更新才发生。
-     * 表示 isTimeToUpdate() 每执行 1 次，更新才发生一次。
+     * Control func update() execution, when isTimeToUpdate() returns true.
+     * when _counter == updateRate's integral multiple, execute update().
+     * which means isTimeToUpdate() executes 10 times, update() executes once.
      * */
     isTimeToUpdate() {
       nonResetCount++
       return count++ % updateRate === 0;
     },
     /**
-     * 处理鼠标进入事件。
-     * 鼠标进入时使.hover-box的背景旋转。
-     * @param event 鼠标事件
+     * Mouse move-in event handler
+     * When mouse enter, .hover-box background-image rotate
+     * @param event Mouse event
      * */
     onMouseEnterHandler(event) {
       let _hover_box_bg = document.querySelector('.hover-box-bg')
@@ -156,9 +152,9 @@ export default {
       this.$options.methods.update(event)
     },
     /**
-     * 处理鼠标移动事件。
-     * 当鼠标移动时改变.hover-box背景旋转角度。
-     * @param event 鼠标事件
+     * Mouse movement event handler
+     * When mouse move in the element, .hover-box background-image rotate
+     * @param event Mouse event
      * */
     onMouseMoveHandler(event) {
       nextTick(() => {
@@ -168,25 +164,16 @@ export default {
       })
     },
     /**
-     * 处理鼠标离开事件。
-     * 鼠标离开时，重置.hover-box样式与$data中counter, updateRate值。
+     * Mouse move-out event handler
+     * When mouse move out, reset .hover-box style, reset counter && updateRate in $data
      * */
     onMouseLeaveHandler() {
       nextTick(() => {
         let _hover_box_bg = document.querySelector('.hover-box-bg')
         _hover_box_bg.classList.remove('hover-box-bg-active')
         count = 0
-        // .getComputedStyle(':before')
-        // this.$refs.hoverBox.style = null
       })
     },
-    /**
-     * 用来展示鼠标当前位置，仅作测试用。
-     * @param mouse mouse对象
-     * */
-    show(mouse) {
-      return '(' + mouse.x + ', ' + mouse.y + ')'
-    }
   }
 }
 </script>
@@ -203,7 +190,7 @@ export default {
 
 .hover-box {
   position: relative;
-  /*padding有关边框厚度*/
+  /*padding is about thick of border*/
   padding: 4px;
   z-index: 1;
   border-radius: 10px;
@@ -257,10 +244,10 @@ export default {
   /*content: '';*/
   /*position: absolute;*/
   /*z-index: -1;*/
-  /*!*上左边框宽度*!*/
+  /*!*Top and Left border thick*!*/
   /*left: 4px;*/
   /*top: 4px;*/
-  /*!*下右边框宽度*!*/
+  /*!*Bottom and Right border thick*!*/
   /*width: calc(100% - 8px);*/
   /*height: calc(100% - 8px);*/
   /*background: #1C1C1C;*/
